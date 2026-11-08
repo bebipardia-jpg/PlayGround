@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#101a19" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>ISLAND DROP — Bermuda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="menu-open">
+    <div id="game"></div>
+    <div class="vignette"></div>
+    <div class="topbar">
+      <div class="brand"><i class="brand-mark">I</i><span>ISLAND <b>DROP</b><small>BERMUDA · SURVIVAL OPERATION</small></span></div>
+      <div class="mission"><span class="live-dot"></span> LIVE OPERATION <b>07:42</b></div>
+      <button class="icon-button" id="settings-button" aria-label="Settings">☼</button>
+    </div>
+
+    <section class="hud">
+      <div class="top-left">
+        <div class="mission-card glass"><span class="eyebrow">OBJECTIVE <b>01 / 04</b></span><strong>Clear the island</strong><small>Eliminate hostiles. Stay alive.</small><div class="progress"><i></i></div></div>
+        <div class="health-card glass" id="health-card"><div class="label-row"><span>VITALS</span><b><i class="heart">+</i> <span id="hp-value">100</span></b></div><div class="health-track"><i id="hp-fill"></i></div><div class="armor-line"><span>ARMOR</span><b>● ● ● ○</b></div></div>
+      </div>
+      <div class="top-center"><div class="compass"><span>W</span><span class="minor">NW</span><strong> N <i></i></strong><span class="minor">NE</span><span>E</span></div><div class="coords">BERMUDA ISLAND <b>·</b> <span>SECTOR 04 / 08</span></div></div>
+      <div class="top-right">
+        <div class="round-card glass"><small>WAVE</small><strong id="round">01</strong></div>
+        <div class="alive-card glass"><span class="people-icon">♟</span><div><b id="alive-count">13</b><small>ALIVE</small></div></div>
+        <div class="score-card"><small>SCORE</small><b id="score">00000</b></div>
+      </div>
+      <div class="map-panel glass" id="map-panel"><div class="map-title"><span>TACTICAL MAP</span><button id="map-toggle">↗</button></div><canvas id="map-canvas"></canvas><div class="map-footer"><span><i class="you-dot"></i> YOU</span><span><i class="enemy-dot"></i> HOSTILE</span></div></div>
+      <div class="center-reticle"><i></i><i></i><i></i><i></i><b></b></div>
+      <div id="hitmarker" class="hitmarker"><i></i><i></i><i></i><i></i></div>
+      <div id="muzzle"></div>
+      <div class="bottom-left"><div class="location"><i>⌖</i><span><b>HANGAR</b><small>BERMUDA ISLAND</small></span></div><div class="kill-feed" id="kill-feed"></div></div>
+      <div class="bottom-center"><div class="weapon-name"><span>PRIMARY WEAPON</span><b>VSS <i>·</i> TACTICAL</b></div><div class="ammo"><strong id="ammo-value">30</strong><i>/</i><span id="reserve-value">120</span><small>5.56 MM</small></div><div class="reload-label" id="reload-label">RELOADING</div></div>
+      <div class="bottom-right"><div class="kills"><span class="skull">✕</span><b id="kill-count">00</b><small>ELIMINATIONS</small></div><div class="firemode">● <span>AUTO</span></div></div>
+      <div class="damage-overlay" id="damage-overlay"></div>
+      <div id="toast" class="toast"></div>
+    </section>
+
+    <div class="mobile-controls">
+      <div class="dpad"><button id="move-up" aria-label="Move forward">▲</button><button id="move-left" aria-label="Move left">◀</button><button id="move-down" aria-label="Move back">▼</button><button id="move-right" aria-label="Move right">▶</button></div>
+      <div class="touch-hint">DRAG TO LOOK</div>
+      <button class="touch-action aim-action" id="aim-button">⌖<small>AIM</small></button>
+      <button class="touch-action reload-action" id="reload-button">↻<small>RELOAD</small></button>
+      <button class="fire-action" id="fire-button"><span>FIRE</span></button>
+      <button class="touch-sprint" id="sprint-button">⇧</button>
+    </div>
+
+    <div class="screen-cover" id="start-screen">
+      <div class="cover-top"><div class="brand"><i class="brand-mark">I</i><span>ISLAND <b>DROP</b><small>BERMUDA · SURVIVAL OPERATION</small></span></div><button class="cover-settings" id="menu-settings">⚙ <span>SETTINGS</span></button></div>
+      <div class="cover-content">
+        <div class="eyebrow"><i class="live-dot"></i> OPERATION: LAST LIGHT <b>·</b> BERMUDA ISLAND</div>
+        <h1>DROP IN.<br/><em>TAKE IT ALL.</em></h1>
+        <p>Hostiles have taken the island. Land, gear up, and clear every settlement before the next wave closes in.</p>
+        <button class="start-button" id="start-button"><span>DEPLOY TO ISLAND</span><b>↗</b></button>
+        <div class="briefing"><div><i>01</i><span><b>12 HOSTILES</b><small>Hostile forces active</small></span></div><div><i>02</i><span><b>OPEN WORLD</b><small>Explore Bermuda island</small></span></div><div><i>03</i><span><b>STAY ALIVE</b><small>Survive every wave</small></span></div></div>
+      </div>
+      <div class="cover-bottom"><span>© 2026 ISLAND DROP OPERATIONS</span><span>BERMUDA, NORTH ATLANTIC <i>·</i> 26°20′N</span></div>
+      <div class="cover-art"><div class="cover-sun"></div><div class="art-hill hill-back"></div><div class="art-hill hill-front"></div><div class="art-tower"></div><div class="art-palm palm-one">♣</div><div class="art-palm palm-two">♣</div></div>
+    </div>
+    <div class="pause-screen overlay-screen" id="pause-screen"><div class="dialog glass"><div class="eyebrow">OPERATION PAUSED</div><h2>TAKE A BREATHER.</h2><p>The island isn't going anywhere. Yet.</p><button class="start-button" id="resume-button"><span>BACK TO THE FIGHT</span><b>↗</b></button></div></div>
+    <div class="overlay-screen" id="end-screen"><div class="dialog glass"><div class="eyebrow">MISSION REPORT</div><h2 id="end-title">MISSION FAILED</h2><p id="end-copy">Drop back in and finish the job.</p><button class="start-button" id="restart-button"><span>DEPLOY AGAIN</span><b>↗</b></button></div></div>
+    <div class="settings-panel glass" id="settings-panel"><div class="settings-heading"><div><span class="eyebrow">FIELD CONFIGURATION</span><h2>SETTINGS</h2></div><button id="settings-close">×</button></div><label class="setting-row"><span>LOOK SENSITIVITY<small>Adjust camera movement</small></span><div><input id="sensitivity" type="range" min="0.5" max="2.5" value="1.2" step="0.1"><b id="sensitivity-value">1.2×</b></div></label><div class="setting-row"><span>SOUND EFFECTS<small>Combat and interface audio</small></span><button class="toggle active" id="sound-toggle">ON</button></div><div class="setting-tip"><b>CONTROLS</b><p>WASD move <i>·</i> Mouse aim <i>·</i> Click fire <i>·</i> Right-click aim <i>·</i> R reload <i>·</i> Shift sprint</p><p class="mobile-tip">Touch arrows move <i>·</i> Drag screen to look <i>·</i> Fire button shoots</p></div></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
